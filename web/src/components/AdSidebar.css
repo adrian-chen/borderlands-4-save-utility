@@ -1,0 +1,45 @@
+.ad-sidebar {
+  width: 160px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.ad-placeholder {
+  width: 160px;
+  height: 600px;
+  background: var(--bg-card);
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 1rem;
+}
+
+.ad-placeholder p {
+  margin: 0.25rem 0;
+}
+
+.ad-placeholder .ad-size {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.ad-placeholder small {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+/* Hide ads on smaller screens */
+@media (max-width: 1199px) {
+  .ad-sidebar {
+    display: none;
+  }
+}

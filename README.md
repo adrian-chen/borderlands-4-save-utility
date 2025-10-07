@@ -4,6 +4,18 @@ A tool to decrypt and encrypt Borderlands 4 save files for editing, with advance
 
 ### If you find this tool helpful, please consider giving it a ⭐!
 
+## 🌐 Web Version Available!
+
+A browser-based version is now available in the `web/` directory! Use the tool directly in your browser with drag-and-drop file upload. No Python installation required.
+
+- **Try it locally**: `cd web && npm install && npm run dev`
+- **Deploy your own**: See `web/README.md` for deployment instructions
+- **100% client-side** - Your save files never leave your computer
+
+[View Web Version Documentation →](web/README.md)
+
+## 💻 Python CLI Version
+
 ## Requirements
 
 - [Python 3.7+](https://www.python.org/downloads/) - Download and install Python

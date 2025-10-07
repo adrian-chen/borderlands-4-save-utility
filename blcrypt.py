@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # written by glacierpiece
-# https://github.com/glacierpiece/borderlands-4-save-utlity
+# https://github.com/adrian-chen/borderlands-4-save-utility
 
 import argparse, sys, zlib, yaml, struct
 from pathlib import Path

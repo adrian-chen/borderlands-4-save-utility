@@ -150,7 +150,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Borderlands 4 Save Utility</h1>
+        <h1>Borderlands 4 Save Editor</h1>
         <p>Decrypt and encrypt BL4 save files with item serial manipulation</p>
       </header>
 

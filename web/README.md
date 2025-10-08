@@ -1,4 +1,4 @@
-# Borderlands 4 Save Utility - Web Version
+# Borderlands 4 Save Editor - Web Version
 
 A web-based tool to decrypt and encrypt Borderlands 4 save files with item serial manipulation. Built with React, TypeScript, and Vite.
 

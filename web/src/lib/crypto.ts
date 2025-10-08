@@ -1,4 +1,5 @@
-import * as pako from 'pako';
+import { createCipheriv, createDecipheriv } from 'crypto';
+import { inflateSync, deflateSync } from 'zlib';
 
 const BASE_KEY = new Uint8Array([
   0x35, 0xEC, 0x33, 0x77, 0xF3, 0x5D, 0xB0, 0xEA,
@@ -56,74 +57,35 @@ function unpad(data: Uint8Array): Uint8Array {
 }
 
 /**
- * AES-ECB decrypt using Web Crypto API
- * Note: ECB is not natively supported, so we decrypt block by block
+ * AES-ECB decrypt using Node.js crypto module
  */
-async function aesEcbDecrypt(key: Uint8Array, data: Uint8Array): Promise<Uint8Array> {
-  const cryptoKey = await crypto.subtle.importKey(
-    'raw',
-    key.buffer as ArrayBuffer,
-    { name: 'AES-CBC', length: 256 },
-    false,
-    ['decrypt']
-  );
-
-  const blockSize = 16;
-  const result = new Uint8Array(data.length);
-  const iv = new Uint8Array(16).buffer as ArrayBuffer; // Zero IV for simulating ECB
-
-  for (let i = 0; i < data.length; i += blockSize) {
-    const block = data.slice(i, i + blockSize);
-    const decrypted = await crypto.subtle.decrypt(
-      { name: 'AES-CBC', iv },
-      cryptoKey,
-      block.buffer as ArrayBuffer
-    );
-    result.set(new Uint8Array(decrypted), i);
-  }
-
-  return result;
+function aesEcbDecrypt(key: Uint8Array, data: Uint8Array): Uint8Array {
+  const decipher = createDecipheriv('aes-256-ecb', key, null);
+  decipher.setAutoPadding(false);
+  const decrypted = Buffer.concat([decipher.update(data), decipher.final()]);
+  return new Uint8Array(decrypted);
 }
 
 /**
- * AES-ECB encrypt using Web Crypto API
+ * AES-ECB encrypt using Node.js crypto module
  */
-async function aesEcbEncrypt(key: Uint8Array, data: Uint8Array): Promise<Uint8Array> {
-  const cryptoKey = await crypto.subtle.importKey(
-    'raw',
-    key.buffer as ArrayBuffer,
-    { name: 'AES-CBC', length: 256 },
-    false,
-    ['encrypt']
-  );
-
-  const blockSize = 16;
-  const result = new Uint8Array(data.length);
-  const iv = new Uint8Array(16).buffer as ArrayBuffer; // Zero IV for simulating ECB
-
-  for (let i = 0; i < data.length; i += blockSize) {
-    const block = data.slice(i, i + blockSize);
-    const encrypted = await crypto.subtle.encrypt(
-      { name: 'AES-CBC', iv },
-      cryptoKey,
-      block.buffer as ArrayBuffer
-    );
-    result.set(new Uint8Array(encrypted), i);
-  }
-
-  return result;
+function aesEcbEncrypt(key: Uint8Array, data: Uint8Array): Uint8Array {
+  const cipher = createCipheriv('aes-256-ecb', key, null);
+  cipher.setAutoPadding(false);
+  const encrypted = Buffer.concat([cipher.update(data), cipher.final()]);
+  return new Uint8Array(encrypted);
 }
 
 /**
  * Decrypt .sav file to YAML bytes
  */
-export async function decryptSavToYaml(savData: Uint8Array, steamId: string): Promise<Uint8Array> {
+export function decryptSavToYaml(savData: Uint8Array, steamId: string): Uint8Array {
   if (savData.length % 16 !== 0) {
     throw new Error(`Input .sav size ${savData.length} not multiple of 16`);
   }
 
   const key = deriveKey(steamId);
-  const ptPadded = await aesEcbDecrypt(key, savData);
+  const ptPadded = aesEcbDecrypt(key, savData);
 
   let body: Uint8Array;
   try {
@@ -132,15 +94,15 @@ export async function decryptSavToYaml(savData: Uint8Array, steamId: string): Pr
     body = ptPadded;
   }
 
-  const yamlData = pako.inflate(body);
-  return yamlData;
+  const yamlData = inflateSync(body);
+  return new Uint8Array(yamlData);
 }
 
 /**
  * Encrypt YAML bytes to .sav file
  */
-export async function encryptYamlToSav(yamlData: Uint8Array, steamId: string): Promise<Uint8Array> {
-  const compressed = pako.deflate(yamlData, { level: 9 });
+export function encryptYamlToSav(yamlData: Uint8Array, steamId: string): Uint8Array {
+  const compressed = deflateSync(yamlData, { level: 9 });
 
   // Calculate adler32 checksum
   const adler32 = calculateAdler32(yamlData);
@@ -156,7 +118,7 @@ export async function encryptYamlToSav(yamlData: Uint8Array, steamId: string): P
 
   const ptPadded = pad(packed, 16);
   const key = deriveKey(steamId);
-  const encrypted = await aesEcbEncrypt(key, ptPadded);
+  const encrypted = aesEcbEncrypt(key, ptPadded);
 
   return encrypted;
 }

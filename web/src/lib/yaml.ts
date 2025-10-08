@@ -3,6 +3,34 @@ import { decodeItemSerial, encodeItemSerial } from './items';
 import type { DecodedItem, DecodedItemYaml, YamlData } from './types';
 
 /**
+ * Custom YAML schema to handle unknown tags from Borderlands save files
+ * This mimics Python's unknown_constructor which catches all ! tags
+ */
+const BORDERLANDS_SCHEMA = yaml.DEFAULT_SCHEMA.extend({
+  implicit: [],
+  explicit: [
+    new yaml.Type('!', {
+      kind: 'scalar',
+      multi: true,
+      resolve: () => true,
+      construct: (data) => data,
+    }),
+    new yaml.Type('!', {
+      kind: 'sequence',
+      multi: true,
+      resolve: () => true,
+      construct: (data) => data,
+    }),
+    new yaml.Type('!', {
+      kind: 'mapping',
+      multi: true,
+      resolve: () => true,
+      construct: (data) => data,
+    }),
+  ],
+});
+
+/**
  * Recursively search YAML data for item serials and decode them
  */
 export function findAndDecodeSerials(yamlData: YamlData): Record<string, DecodedItem> {
@@ -166,9 +194,10 @@ function setNestedValue(data: YamlData, path: string, value: string): void {
 
 /**
  * Parse YAML string to object
+ * Uses custom schema to handle unknown YAML tags from Borderlands save files
  */
 export function parseYaml(yamlString: string): YamlData {
-  return yaml.load(yamlString) as YamlData;
+  return yaml.load(yamlString, { schema: BORDERLANDS_SCHEMA }) as YamlData;
 }
 
 /**

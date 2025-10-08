@@ -1,5 +1,4 @@
-import { createCipheriv, createDecipheriv } from 'crypto';
-import { inflateSync, deflateSync } from 'zlib';
+import * as pako from 'pako';
 
 const BASE_KEY = new Uint8Array([
   0x35, 0xEC, 0x33, 0x77, 0xF3, 0x5D, 0xB0, 0xEA,

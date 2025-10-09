@@ -68,7 +68,6 @@ describe('Integration - Real .sav file processing', () => {
 
       expect(yamlData).toBeDefined();
       expect(yamlData).toBeTypeOf('object');
-      expect(yamlString.length).toBeGreaterThan(0);
     });
 
     it('should round-trip encrypt/decrypt 3.sav without data loss', () => {

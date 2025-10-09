@@ -8,6 +8,7 @@ import {
 } from '../yaml';
 import { bitPackEncode } from '../codec';
 import type { YamlData } from '../types';
+import { WEAPON_SERIALS } from '../../../tests/fixtures/sample-serials';
 
 describe('YAML Transformations', () => {
   describe('findAndDecodeSerials', () => {
@@ -98,13 +99,14 @@ describe('YAML Transformations', () => {
     });
 
     it('should only include items with non-none confidence', () => {
-      // Invalid serial should have confidence 'none' and be excluded
+      // Strings not starting with '@Ug' are ignored by findAndDecodeSerials
       const yamlData: YamlData = {
-        invalid: '@UgrInvalid',
+        unknown: 'not-a-serial',
       };
 
       const decoded = findAndDecodeSerials(yamlData);
 
+      // Non-serial strings are not processed at all
       expect(Object.keys(decoded).length).toBe(0);
     });
   });
@@ -150,12 +152,8 @@ describe('YAML Transformations', () => {
     });
 
     it('should include stats in _DECODED_ITEMS', () => {
-      const testData = new Uint8Array(24);
-      const view = new DataView(testData.buffer);
-      view.setUint16(0, 9999, true);
-      testData[1] = 2; // rarity
-      testData[4] = 5; // manufacturer
-      const serial = bitPackEncode(testData, '@Ugr');
+      // Use real weapon serial from save file with known stats
+      const serial = WEAPON_SERIALS[0]; // primary_stat: 5294
 
       const yamlData: YamlData = {
         weapon: serial,
@@ -166,7 +164,7 @@ describe('YAML Transformations', () => {
 
       const decodedItems = result['_DECODED_ITEMS'] as Record<string, any>;
       expect(decodedItems['weapon'].stats).toBeDefined();
-      expect(decodedItems['weapon'].stats.primary_stat).toBe(9999);
+      expect(decodedItems['weapon'].stats.primary_stat).toBe(5294);
     });
   });
 

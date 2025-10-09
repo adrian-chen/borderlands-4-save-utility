@@ -275,9 +275,10 @@ export function encodeItemSerial(decodedItem: DecodedItem): string {
       if (decodedItem.stats.secondary_stat !== undefined && data.length >= 14) {
         view.setUint16(12, decodedItem.stats.secondary_stat, true);
       }
-      if (decodedItem.stats.rarity !== undefined && data.length >= 2) {
-        data[1] = decodedItem.stats.rarity;
-      }
+      // Skip rarity write - it's the high byte of primary_stat and gets overwritten
+      // if (decodedItem.stats.rarity !== undefined && data.length >= 2) {
+      //   data[1] = decodedItem.stats.rarity;
+      // }
       if (decodedItem.stats.manufacturer !== undefined && data.length >= 5) {
         data[4] = decodedItem.stats.manufacturer;
       }
@@ -294,12 +295,14 @@ export function encodeItemSerial(decodedItem: DecodedItem): string {
       if (decodedItem.stats.manufacturer !== undefined && data.length >= 2) {
         data[1] = decodedItem.stats.manufacturer;
       }
-      if (decodedItem.stats.item_class !== undefined && data.length >= 4) {
-        data[3] = decodedItem.stats.item_class;
-      }
-      if (decodedItem.stats.rarity !== undefined && data.length >= 10) {
-        data[9] = decodedItem.stats.rarity;
-      }
+      // Skip item_class write - it's the high byte of primary_stat (byte 3)
+      // if (decodedItem.stats.item_class !== undefined && data.length >= 4) {
+      //   data[3] = decodedItem.stats.item_class;
+      // }
+      // Skip rarity write - it's the high byte of secondary_stat (byte 9)
+      // if (decodedItem.stats.rarity !== undefined && data.length >= 10) {
+      //   data[9] = decodedItem.stats.rarity;
+      // }
     } else if (decodedItem.item_type === 'd') {
       if (decodedItem.stats.primary_stat !== undefined && data.length >= 6) {
         view.setUint16(4, decodedItem.stats.primary_stat, true);
@@ -315,7 +318,8 @@ export function encodeItemSerial(decodedItem: DecodedItem): string {
       }
     }
 
-    const prefix = `@Ug${decodedItem.item_type}`;
+    // Use '@Ug' prefix - the type character is already part of the encoded data
+    const prefix = '@Ug';
     return bitPackEncode(data, prefix);
   } catch (e) {
     console.warn('Failed to encode item serial:', e);

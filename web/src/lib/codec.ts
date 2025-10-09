@@ -10,6 +10,8 @@ const CHAR_SET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 export function bitPackDecode(serial: string): Uint8Array {
   let payload: string;
 
+  // Strip the '@Ug' prefix only - the type character (if present) is part of the encoded data
+  // This matches Python's behavior
   if (serial.startsWith('@Ug')) {
     payload = serial.slice(3);
   } else {
@@ -31,15 +33,11 @@ export function bitPackDecode(serial: string): Uint8Array {
     }
   }
 
-  // Pad to multiple of 8
-  while (bitString.length % 8 !== 0) {
-    bitString += '0';
-  }
-
-  // Convert bit string to bytes
+  // Convert bit string to bytes (only full bytes, ignore padding bits)
+  const numBytes = Math.floor(bitString.length / 8);
   const byteData: number[] = [];
-  for (let i = 0; i < bitString.length; i += 8) {
-    const byte = parseInt(bitString.slice(i, i + 8), 2);
+  for (let i = 0; i < numBytes; i++) {
+    const byte = parseInt(bitString.slice(i * 8, (i + 1) * 8), 2);
     byteData.push(byte);
   }
 

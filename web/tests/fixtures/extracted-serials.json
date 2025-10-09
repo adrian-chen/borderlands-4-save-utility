@@ -1,0 +1,892 @@
+{
+  "totalSerials": 140,
+  "byType": {
+    "u": {
+      "count": 4,
+      "samples": [
+        {
+          "serial": "@Uguq~c2?h%y%%%t`i7M2hh71iVEUG8!Cn^l84k{Pw9s&",
+          "path": "state.inventory.items.backpack.slot_0.serial",
+          "decoded": {
+            "type": "u",
+            "category": "utility",
+            "confidence": "low",
+            "length": 32,
+            "stats": {
+              "primary_stat": 6218,
+              "secondary_stat": 3719,
+              "manufacturer": 169,
+              "rarity": 142
+            }
+          }
+        },
+        {
+          "serial": "@Uguq~c2?h%yOwI%vjVe^48WpLqs4%EKs8Og}s9&gi2m",
+          "path": "state.packages[0].contents[0].serial_numbers[0]",
+          "decoded": {
+            "type": "u",
+            "category": "utility",
+            "confidence": "low",
+            "length": 31,
+            "stats": {
+              "primary_stat": 6218,
+              "secondary_stat": 7545,
+              "manufacturer": 169,
+              "rarity": 142
+            }
+          }
+        },
+        {
+          "serial": "@Uguq~c2?h%y%>4!Wiz-y39yJrSsXC}ysB)-%2m",
+          "path": "state.lostloot.items[41].serial",
+          "decoded": {
+            "type": "u",
+            "category": "utility",
+            "confidence": "low",
+            "length": 26,
+            "stats": {
+              "primary_stat": 6218,
+              "manufacturer": 169,
+              "rarity": 142
+            }
+          }
+        },
+        {
+          "serial": "@Uguq~c3FZnS%%lwpjVe^49+eZdsXC}ys9&gi2m",
+          "path": "state.lostloot.items[66].serial",
+          "decoded": {
+            "type": "u",
+            "category": "utility",
+            "confidence": "low",
+            "length": 27,
+            "stats": {
+              "primary_stat": 3749,
+              "secondary_stat": 6739,
+              "manufacturer": 169,
+              "rarity": 142
+            }
+          }
+        }
+      ]
+    },
+    "e": {
+      "count": 48,
+      "samples": [
+        {
+          "serial": "@Uge8;)m/$ig!qAMMM!jz*=uq#Y*(G{~DgX",
+          "path": "state.inventory.items.backpack.slot_1.serial",
+          "decoded": {
+            "type": "e",
+            "category": "equipment",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 59025,
+              "secondary_stat": 936,
+              "manufacturer": 202,
+              "item_class": 230,
+              "rarity": 3
+            }
+          }
+        },
+        {
+          "serial": "@Uge92<m/%J!!fd;sMm?&1G&jVD^bkk@",
+          "path": "state.inventory.items.backpack.slot_9.serial",
+          "decoded": {
+            "type": "e",
+            "category": "equipment",
+            "confidence": "medium",
+            "length": 22,
+            "stats": {
+              "primary_stat": 19880,
+              "secondary_stat": 55933,
+              "manufacturer": 221,
+              "item_class": 77,
+              "rarity": 218
+            }
+          }
+        },
+        {
+          "serial": "@Uge8Rrm/%V&!q~r{L_O+!G}=U(U=mwG1po",
+          "path": "state.inventory.items.backpack.slot_11.serial",
+          "decoded": {
+            "type": "e",
+            "category": "equipment",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 39787,
+              "secondary_stat": 51796,
+              "manufacturer": 196,
+              "item_class": 155,
+              "rarity": 202
+            }
+          }
+        },
+        {
+          "serial": "@Uge8Oqm/%V&!dR}LN4;++Xj1Q^i6*k;D*y",
+          "path": "state.inventory.items.backpack.slot_13.serial",
+          "decoded": {
+            "type": "e",
+            "category": "equipment",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 39850,
+              "secondary_stat": 13034,
+              "manufacturer": 195,
+              "item_class": 155,
+              "rarity": 50
+            }
+          }
+        },
+        {
+          "serial": "@Uge8Usm/(CV!pKjcN4;++s8H{tp(S-CD*y",
+          "path": "state.inventory.items.backpack.slot_14.serial",
+          "decoded": {
+            "type": "e",
+            "category": "equipment",
+            "confidence": "medium",
+            "length": 24,
+            "stats": {
+              "primary_stat": 39724,
+              "secondary_stat": 41874,
+              "manufacturer": 197,
+              "item_class": 155,
+              "rarity": 163
+            }
+          }
+        }
+      ]
+    },
+    "r": {
+      "count": 47,
+      "samples": [
+        {
+          "serial": "@Ugr$rIm/$oi!u0*1N4;++Xi)E?(IL^rD*y",
+          "path": "state.inventory.items.backpack.slot_2.serial",
+          "decoded": {
+            "type": "r",
+            "category": "weapon",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5550,
+              "secondary_stat": 40842,
+              "manufacturer": 252,
+              "item_class": 118,
+              "rarity": 21
+            }
+          }
+        },
+        {
+          "serial": "@Ugr$rIm/$uk!e}/5N4;++=uq#Yp(1<5CIA",
+          "path": "state.inventory.items.backpack.slot_3.serial",
+          "decoded": {
+            "type": "r",
+            "category": "weapon",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5550,
+              "secondary_stat": 40842,
+              "manufacturer": 252,
+              "item_class": 244,
+              "rarity": 21
+            }
+          }
+        },
+        {
+          "serial": "@Ugr%1Tm/$oi!u-6TN4;++Xi)E?i6-&IDgX",
+          "path": "state.inventory.items.backpack.slot_4.serial",
+          "decoded": {
+            "type": "r",
+            "category": "weapon",
+            "confidence": "medium",
+            "length": 23,
+            "stats": {
+              "primary_stat": 7854,
+              "secondary_stat": 48719,
+              "manufacturer": 252,
+              "item_class": 119,
+              "rarity": 30
+            }
+          }
+        },
+        {
+          "serial": "@Ugr$`Rm/$ig!tDK^N4;++=uq#Yi6(XhD*y",
+          "path": "state.inventory.items.backpack.slot_5.serial",
+          "decoded": {
+            "type": "r",
+            "category": "weapon",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5294,
+              "secondary_stat": 20421,
+              "manufacturer": 254,
+              "item_class": 180,
+              "rarity": 20
+            }
+          }
+        },
+        {
+          "serial": "@Ugr$`Rm/$!m!bs1cN4;++Xi)E?p(S=jD*y",
+          "path": "state.inventory.items.backpack.slot_6.serial",
+          "decoded": {
+            "type": "r",
+            "category": "weapon",
+            "confidence": "medium",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5294,
+              "secondary_stat": 20421,
+              "manufacturer": 254,
+              "item_class": 183,
+              "rarity": 20
+            }
+          }
+        }
+      ]
+    },
+    "x": {
+      "count": 4,
+      "samples": [
+        {
+          "serial": "@Ugxp/&2?h%yOoa+6jVjcl8g-~4LyxM7N{QN3AJi&TD^xDjF9Z",
+          "path": "state.inventory.items.backpack.slot_7.serial",
+          "decoded": {
+            "type": "x",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 35,
+            "stats": {
+              "primary_stat": 6218,
+              "secondary_stat": 7545,
+              "manufacturer": 159,
+              "rarity": 226
+            }
+          }
+        },
+        {
+          "serial": "@UgxFw!3FZnS%$x-Jiz-y4HZ=!T2bBwz4gm",
+          "path": "state.lostloot.items[9].serial",
+          "decoded": {
+            "type": "x",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 23,
+            "stats": {
+              "primary_stat": 3749,
+              "secondary_stat": 9238,
+              "manufacturer": 92,
+              "rarity": 32
+            }
+          }
+        },
+        {
+          "serial": "@UgxFw!3FZnS%$x-Jiz-y4HZ=!T2bBwz4gm",
+          "path": "state.lostloot.items[17].serial",
+          "decoded": {
+            "type": "x",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 23,
+            "stats": {
+              "primary_stat": 3749,
+              "secondary_stat": 9238,
+              "manufacturer": 92,
+              "rarity": 32
+            }
+          }
+        },
+        {
+          "serial": "@UgxFw!3FZnS%$x-Jiz-y4HZ=!T2bBwz4gm",
+          "path": "state.lostloot.items[19].serial",
+          "decoded": {
+            "type": "x",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 23,
+            "stats": {
+              "primary_stat": 3749,
+              "secondary_stat": 9238,
+              "manufacturer": 92,
+              "rarity": 32
+            }
+          }
+        }
+      ]
+    },
+    "g": {
+      "count": 3,
+      "samples": [
+        {
+          "serial": "@UgggUGFjWv?JS0$QR87>P4)v&XsCTGN)j_pF?Lq(",
+          "path": "state.inventory.items.backpack.slot_8.serial",
+          "decoded": {
+            "type": "g",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 29,
+            "stats": {
+              "primary_stat": 1410,
+              "secondary_stat": 5638,
+              "manufacturer": 5,
+              "rarity": 6
+            }
+          }
+        },
+        {
+          "serial": "@Ugg66CFjx>_rWH_LRG/`es6/EU9jYGcQe{zbP<K#uP`gn75C",
+          "path": "state.inventory.items.backpack.slot_32.serial",
+          "decoded": {
+            "type": "g",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 35,
+            "stats": {
+              "primary_stat": 5762,
+              "secondary_stat": 4543,
+              "manufacturer": 174,
+              "rarity": 130
+            }
+          }
+        },
+        {
+          "serial": "@UgggUGFjWv?JS0$QR87>P4)v&XsCTGN)j_pF?Lq(",
+          "path": "state.inventory.equipped_inventory.equipped.slot_3[0].serial",
+          "decoded": {
+            "type": "g",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 29,
+            "stats": {
+              "primary_stat": 1410,
+              "secondary_stat": 5638,
+              "manufacturer": 5,
+              "rarity": 6
+            }
+          }
+        }
+      ]
+    },
+    "w": {
+      "count": 6,
+      "samples": [
+        {
+          "serial": "@Ugw$Yw38n`kT<Qw_LltW1P(Rd4)JxPpRHx>kYN5)Zh6Ml",
+          "path": "state.inventory.items.backpack.slot_10.serial",
+          "decoded": {
+            "type": "w",
+            "category": "weapon_special",
+            "confidence": "low",
+            "length": 33,
+            "stats": {
+              "primary_stat": 5058,
+              "secondary_stat": 6274,
+              "manufacturer": 19,
+              "rarity": 24
+            }
+          }
+        },
+        {
+          "serial": "@Ugw$Yw38n`kT<Qw_LltW1P(Rd4)JxPpRHx>kYN5)Zh6Ml",
+          "path": "state.inventory.equipped_inventory.equipped.slot_2[0].serial",
+          "decoded": {
+            "type": "w",
+            "category": "weapon_special",
+            "confidence": "low",
+            "length": 33,
+            "stats": {
+              "primary_stat": 5058,
+              "secondary_stat": 6274,
+              "manufacturer": 19,
+              "rarity": 24
+            }
+          }
+        },
+        {
+          "serial": "@Ugw$Yw3FZnS%(Vonhbq*eh73h&Q*}_cP~}iVH~;",
+          "path": "state.lostloot.items[7].serial",
+          "decoded": {
+            "type": "w",
+            "category": "weapon_special",
+            "confidence": "low",
+            "length": 29,
+            "stats": {
+              "primary_stat": 5058,
+              "secondary_stat": 3749,
+              "manufacturer": 19,
+              "rarity": 24
+            }
+          }
+        },
+        {
+          "serial": "@Ugw$Yw3FZnS%(Vonhbq*eh73h&Q*}_cP~}iVH~;",
+          "path": "state.lostloot.items[13].serial",
+          "decoded": {
+            "type": "w",
+            "category": "weapon_special",
+            "confidence": "low",
+            "length": 29,
+            "stats": {
+              "primary_stat": 5058,
+              "secondary_stat": 3749,
+              "manufacturer": 19,
+              "rarity": 24
+            }
+          }
+        },
+        {
+          "serial": "@Ugw$Yw3FZnS%(Vonhbq*eh73h&Q*}_cP~}iVH~;",
+          "path": "state.lostloot.items[14].serial",
+          "decoded": {
+            "type": "w",
+            "category": "weapon_special",
+            "confidence": "low",
+            "length": 29,
+            "stats": {
+              "primary_stat": 5058,
+              "secondary_stat": 3749,
+              "manufacturer": 19,
+              "rarity": 24
+            }
+          }
+        }
+      ]
+    },
+    "y": {
+      "count": 4,
+      "samples": [
+        {
+          "serial": "@Ugy>*^35E(H44e<ji7Hg04iyvisZHfUy+YkW<wCtfg+u@",
+          "path": "state.inventory.items.backpack.slot_20.serial",
+          "decoded": {
+            "type": "y",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 32,
+            "stats": {
+              "primary_stat": 9458,
+              "manufacturer": 140,
+              "rarity": 89
+            }
+          }
+        },
+        {
+          "serial": "@Ugy>*^35E(H44e<ji7Hg04iyvisZHfUy+YkW<wCtfg+u@",
+          "path": "state.inventory.equipped_inventory.equipped.slot_0[0].serial",
+          "decoded": {
+            "type": "y",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 32,
+            "stats": {
+              "primary_stat": 9458,
+              "manufacturer": 140,
+              "rarity": 89
+            }
+          }
+        },
+        {
+          "serial": "@Ugy>*^2?h%yjLi%Biz?Ki9(AcZs8y(TsE`N",
+          "path": "state.lostloot.items[44].serial",
+          "decoded": {
+            "type": "y",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 26,
+            "stats": {
+              "primary_stat": 5271,
+              "secondary_stat": 1816,
+              "manufacturer": 140,
+              "rarity": 89
+            }
+          }
+        },
+        {
+          "serial": "@Ugy3L+3C0Q{T#65cMiuH%i+WT&)TZ{JZlTU000",
+          "path": "state.lostloot.items[79].serial",
+          "decoded": {
+            "type": "y",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 27,
+            "stats": {
+              "primary_stat": 4141,
+              "secondary_stat": 7854,
+              "manufacturer": 114,
+              "rarity": 254
+            }
+          }
+        }
+      ]
+    },
+    "c": {
+      "count": 7,
+      "samples": [
+        {
+          "serial": "@Ugct)%Fjo-al1ykcs!)qMRHKFrJt`k+A1VxL4k{FC6)GnJ",
+          "path": "state.inventory.items.backpack.slot_26.serial",
+          "decoded": {
+            "type": "c",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 33,
+            "stats": {
+              "primary_stat": 7209,
+              "secondary_stat": 3250,
+              "manufacturer": 216,
+              "rarity": 240
+            }
+          }
+        },
+        {
+          "serial": "@UgcJizFjf#@G$l}IRG/*Fs7LKYT`CRg4XO/76zUeL9Rd",
+          "path": "state.inventory.items.backpack.slot_27.serial",
+          "decoded": {
+            "type": "c",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 31,
+            "stats": {
+              "primary_stat": 5811,
+              "secondary_stat": 2701,
+              "manufacturer": 152,
+              "rarity": 179
+            }
+          }
+        },
+        {
+          "serial": "@Ugct)%Fjx>_vOdsgRG}7?s7LKX{X=zX4eAvtCjt",
+          "path": "state.packages[4].contents[0].serial_numbers[0]",
+          "decoded": {
+            "type": "c",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 28,
+            "stats": {
+              "primary_stat": 6799,
+              "manufacturer": 216,
+              "rarity": 240
+            }
+          }
+        },
+        {
+          "serial": "@UgcJizFjx>_XdcjCRG}hOsWzxlsBoxu2m",
+          "path": "state.lostloot.items[43].serial",
+          "decoded": {
+            "type": "c",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 23,
+            "stats": {
+              "primary_stat": 5811,
+              "secondary_stat": 9175,
+              "manufacturer": 152,
+              "rarity": 179
+            }
+          }
+        },
+        {
+          "serial": "@Ugct)%Fjx>_=6%p#RG}W#sW_-ts9y*",
+          "path": "state.lostloot.items[49].serial",
+          "decoded": {
+            "type": "c",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 21,
+            "stats": {
+              "primary_stat": 6799,
+              "secondary_stat": 3701,
+              "manufacturer": 216,
+              "rarity": 240
+            }
+          }
+        }
+      ]
+    },
+    "v": {
+      "count": 6,
+      "samples": [
+        {
+          "serial": "@Ugv?-o2?h%y4BibYjVjcl8Z}(#Q72I)QJcDh3WfTEs)ZVd00",
+          "path": "state.inventory.items.backpack.slot_30.serial",
+          "decoded": {
+            "type": "v",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 34,
+            "stats": {
+              "primary_stat": 7814,
+              "secondary_stat": 860,
+              "manufacturer": 149,
+              "rarity": 27
+            }
+          }
+        },
+        {
+          "serial": "@Ugvelk2?h%yjEw~vjVjcl5_PCZ^+a{*4(b%@7HStN9x5LK",
+          "path": "state.packages[3].contents[0].serial_numbers[0]",
+          "decoded": {
+            "type": "v",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 33,
+            "stats": {
+              "primary_stat": 9804,
+              "secondary_stat": 6751,
+              "manufacturer": 233,
+              "rarity": 100
+            }
+          }
+        },
+        {
+          "serial": "@Ugv?-o3FZnS45R}3iz-y2BDJYIs9LCZ2m",
+          "path": "state.lostloot.items[3].serial",
+          "decoded": {
+            "type": "v",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 22,
+            "stats": {
+              "primary_stat": 1206,
+              "secondary_stat": 2379,
+              "manufacturer": 149,
+              "rarity": 27
+            }
+          }
+        },
+        {
+          "serial": "@Ugv?-o3FZnS45R}3iz-y2BDJYIs9LCZ2m",
+          "path": "state.lostloot.items[8].serial",
+          "decoded": {
+            "type": "v",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 22,
+            "stats": {
+              "primary_stat": 1206,
+              "secondary_stat": 2379,
+              "manufacturer": 149,
+              "rarity": 27
+            }
+          }
+        },
+        {
+          "serial": "@Ugv4Ng3FZnSOz#Hzi%N$&RHQ<pHWdf83e^h%",
+          "path": "state.lostloot.items[22].serial",
+          "decoded": {
+            "type": "v",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 26,
+            "stats": {
+              "primary_stat": 4369,
+              "manufacturer": 131,
+              "rarity": 96
+            }
+          }
+        }
+      ]
+    },
+    "f": {
+      "count": 4,
+      "samples": [
+        {
+          "serial": "@UgfIh4Fjx>_E>}=#RG}7?s6#y}Bx)Zj3~CMP6)G13",
+          "path": "state.inventory.items.backpack.slot_31.serial",
+          "decoded": {
+            "type": "f",
+            "category": "consumable",
+            "confidence": "low",
+            "length": 30,
+            "stats": {
+              "primary_stat": 5752,
+              "secondary_stat": 4815,
+              "manufacturer": 136,
+              "rarity": 120
+            }
+          }
+        },
+        {
+          "serial": "@UgfIh4Fjo*^=q1o!RG/{}sDG$1s5z)ss9y*",
+          "path": "state.lostloot.items[4].serial",
+          "decoded": {
+            "type": "f",
+            "category": "consumable",
+            "confidence": "low",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5752,
+              "secondary_stat": 8762,
+              "manufacturer": 136,
+              "rarity": 120
+            }
+          }
+        },
+        {
+          "serial": "@UgfIh4Fjo*^=q1o!RG/{}sDG$1s5z)ss9y*",
+          "path": "state.lostloot.items[11].serial",
+          "decoded": {
+            "type": "f",
+            "category": "consumable",
+            "confidence": "low",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5752,
+              "secondary_stat": 8762,
+              "manufacturer": 136,
+              "rarity": 120
+            }
+          }
+        },
+        {
+          "serial": "@UgfIh4Fjo*^=q1o!RG/{}sDG$1s5z)ss9y*",
+          "path": "state.lostloot.items[12].serial",
+          "decoded": {
+            "type": "f",
+            "category": "consumable",
+            "confidence": "low",
+            "length": 25,
+            "stats": {
+              "primary_stat": 5752,
+              "secondary_stat": 8762,
+              "manufacturer": 136,
+              "rarity": 120
+            }
+          }
+        }
+      ]
+    },
+    "b": {
+      "count": 2,
+      "samples": [
+        {
+          "serial": "@Ugb)KvFjx>_b/uhgRG}Jms6{<09;#DyP@_<>P`3~",
+          "path": "state.packages[1].contents[0].serial_numbers[0]",
+          "decoded": {
+            "type": "b",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 29,
+            "stats": {
+              "manufacturer": 57,
+              "rarity": 87
+            }
+          }
+        },
+        {
+          "serial": "@Ugb)KvFjx>_E-%nuRG}U<54EW`s9C6R2m",
+          "path": "state.lostloot.items[60].serial",
+          "decoded": {
+            "type": "b",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 23,
+            "stats": {
+              "primary_stat": 6801,
+              "manufacturer": 57,
+              "rarity": 87
+            }
+          }
+        }
+      ]
+    },
+    "a": {
+      "count": 1,
+      "samples": [
+        {
+          "serial": "@Uga`vnFjo*^z9!ILRG}6XsgtNq-9gnt<wTuB00",
+          "path": "state.lostloot.items[15].serial",
+          "decoded": {
+            "type": "a",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 27,
+            "stats": {
+              "primary_stat": 4381,
+              "secondary_stat": 4844,
+              "manufacturer": 109,
+              "rarity": 243
+            }
+          }
+        }
+      ]
+    },
+    "#": {
+      "count": 2,
+      "samples": [
+        {
+          "serial": "@Ug#2fK2?h%yjD-qniE30DgSuf*wd(}{",
+          "path": "state.lostloot.items[29].serial",
+          "decoded": {
+            "type": "#",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 21,
+            "stats": {
+              "primary_stat": 6218,
+              "secondary_stat": 9924,
+              "manufacturer": 179,
+              "rarity": 229
+            }
+          }
+        },
+        {
+          "serial": "@Ug#2fK3FZnSjGPB*iAvNhR4-KR{r~^",
+          "path": "state.lostloot.items[82].serial",
+          "decoded": {
+            "type": "#",
+            "category": "unknown",
+            "confidence": "low",
+            "length": 20,
+            "stats": {
+              "primary_stat": 6309,
+              "secondary_stat": 8214,
+              "manufacturer": 179,
+              "rarity": 229
+            }
+          }
+        }
+      ]
+    },
+    "!": {
+      "count": 2,
+      "samples": [
+        {
+          "serial": "@Ug!pHG2?h%y4BQKvn`%@aRQ*)#;s5{",
+          "path": "state.lostloot.items[30].serial",
+          "decoded": {
+            "type": "!",
+            "category": "special",
+            "confidence": "low",
+            "length": 21,
+            "stats": {
+              "primary_stat": 6218,
+              "secondary_stat": 1290,
+              "manufacturer": 72,
+              "rarity": 227
+            }
+          }
+        },
+        {
+          "serial": "@Ug!pHG3FZnS4CDuzn~Ky5gPNJDT^s-",
+          "path": "state.lostloot.items[70].serial",
+          "decoded": {
+            "type": "!",
+            "category": "special",
+            "confidence": "low",
+            "length": 20,
+            "stats": {
+              "primary_stat": 3992,
+              "manufacturer": 72,
+              "rarity": 227
+            }
+          }
+        }
+      ]
+    }
+  }
+}

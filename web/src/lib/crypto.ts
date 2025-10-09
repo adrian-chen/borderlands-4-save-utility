@@ -1,4 +1,5 @@
-import * as pako from 'pako';
+import pako from 'pako';
+import * as aesjs from 'aes-js';
 
 const BASE_KEY = new Uint8Array([
   0x35, 0xEC, 0x33, 0x77, 0xF3, 0x5D, 0xB0, 0xEA,
@@ -56,23 +57,41 @@ function unpad(data: Uint8Array): Uint8Array {
 }
 
 /**
- * AES-ECB decrypt using Node.js crypto module
+ * AES-ECB decrypt using aes-js (browser-compatible)
  */
 function aesEcbDecrypt(key: Uint8Array, data: Uint8Array): Uint8Array {
-  const decipher = createDecipheriv('aes-256-ecb', key, null);
-  decipher.setAutoPadding(false);
-  const decrypted = Buffer.concat([decipher.update(data), decipher.final()]);
-  return new Uint8Array(decrypted);
+  // aes-js requires key to be an array (not Uint8Array)
+  const keyArray = Array.from(key);
+
+  // Decrypt in 16-byte blocks - create new cipher for each block to avoid state issues
+  const decrypted = new Uint8Array(data.length);
+  for (let i = 0; i < data.length; i += 16) {
+    const aesCipher = new aesjs.ModeOfOperation.ecb(keyArray);
+    const block = Array.from(data.slice(i, i + 16));
+    const decryptedBlock = aesCipher.decrypt(block);
+    decrypted.set(new Uint8Array(decryptedBlock), i);
+  }
+
+  return decrypted;
 }
 
 /**
- * AES-ECB encrypt using Node.js crypto module
+ * AES-ECB encrypt using aes-js (browser-compatible)
  */
 function aesEcbEncrypt(key: Uint8Array, data: Uint8Array): Uint8Array {
-  const cipher = createCipheriv('aes-256-ecb', key, null);
-  cipher.setAutoPadding(false);
-  const encrypted = Buffer.concat([cipher.update(data), cipher.final()]);
-  return new Uint8Array(encrypted);
+  // aes-js requires key to be an array (not Uint8Array)
+  const keyArray = Array.from(key);
+
+  // Encrypt in 16-byte blocks - create new cipher for each block to avoid state issues
+  const encrypted = new Uint8Array(data.length);
+  for (let i = 0; i < data.length; i += 16) {
+    const aesCipher = new aesjs.ModeOfOperation.ecb(keyArray);
+    const block = Array.from(data.slice(i, i + 16));
+    const encryptedBlock = aesCipher.encrypt(block);
+    encrypted.set(new Uint8Array(encryptedBlock), i);
+  }
+
+  return encrypted;
 }
 
 /**
@@ -86,6 +105,10 @@ export function decryptSavToYaml(savData: Uint8Array, steamId: string): Uint8Arr
   const key = deriveKey(steamId);
   const ptPadded = aesEcbDecrypt(key, savData);
 
+  if (!ptPadded) {
+    throw new Error('AES decryption returned undefined');
+  }
+
   let body: Uint8Array;
   try {
     body = unpad(ptPadded);
@@ -93,15 +116,60 @@ export function decryptSavToYaml(savData: Uint8Array, steamId: string): Uint8Arr
     body = ptPadded;
   }
 
-  const yamlData = inflateSync(body);
-  return new Uint8Array(yamlData);
+  // Strip off last 8 bytes (adler32 + uncompressed_length) before decompression
+  const compressed = body.slice(0, body.length - 8);
+
+  // Use Inflate class and concatenate chunks manually
+  const inflator = new pako.Inflate();
+  inflator.push(compressed, true);
+
+  if (inflator.err) {
+    throw new Error(`pako Inflate class failed: ${inflator.msg || inflator.err}`);
+  }
+
+  // Manually concatenate chunks if result is undefined
+  const chunks = (inflator as any).chunks as Uint8Array[];
+  const strm = (inflator as any).strm;
+
+  if (!inflator.result && chunks && chunks.length > 0) {
+    // Use the actual total output length from the stream
+    const actualLength = strm?.total_out || 0;
+
+    if (actualLength === 0) {
+      throw new Error('Cannot determine actual decompressed length');
+    }
+
+    // Concatenate all chunks plus the current output buffer
+    const result = new Uint8Array(actualLength);
+    let offset = 0;
+
+    // Copy all complete chunks
+    for (const chunk of chunks) {
+      result.set(chunk, offset);
+      offset += chunk.length;
+    }
+
+    // Copy the remaining bytes from the current output buffer
+    const remainingBytes = strm.next_out;
+    if (remainingBytes > 0) {
+      result.set(strm.output.subarray(0, remainingBytes), offset);
+    }
+
+    return result;
+  }
+
+  if (!inflator.result) {
+    throw new Error('pako Inflate class returned no result');
+  }
+
+  return inflator.result as Uint8Array;
 }
 
 /**
  * Encrypt YAML bytes to .sav file
  */
 export function encryptYamlToSav(yamlData: Uint8Array, steamId: string): Uint8Array {
-  const compressed = deflateSync(yamlData, { level: 9 });
+  const compressed = pako.deflate(yamlData, { level: 9 });
 
   // Calculate adler32 checksum
   const adler32 = calculateAdler32(yamlData);

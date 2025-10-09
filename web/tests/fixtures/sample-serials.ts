@@ -1,25 +1,38 @@
 /**
- * Sample item serials for testing
- * These are example serials representing different item types
+ * Sample item serials for testing - extracted from real save files
  */
 
+// Type 'r' weapons - Real serials from 1.sav
 export const WEAPON_SERIALS = [
-  // Type 'r' weapons - replace with real serials when available
-  '@UgrAABBCCDDEE',
+  // High confidence weapon (length 24), primary_stat: 5294, secondary_stat: 10074
+  '@Ugr$lGm/&<N!od8XM-}RPG}pu$8r1oA0ss',
+  // Medium confidence weapon (length 25), primary_stat: 5550, secondary_stat: 40842
+  '@Ugr$rIm/$oi!u0*1N4;++Xi)E?(IL^rD*y',
+  // Medium confidence weapon (length 25), primary_stat: 5550, secondary_stat: 40842
+  '@Ugr$rIm/$uk!e}/5N4;++=uq#Yp(1<5CIA',
 ];
 
+// Type 'e' equipment - Real serials from 1.sav
 export const EQUIPMENT_E_SERIALS = [
-  // Type 'e' equipment - replace with real serials when available
-  '@UgeXXYYZZ',
+  // Medium confidence (length 25), primary_stat: 59025, secondary_stat: 936
+  '@Uge8;)m/$ig!qAMMM!jz*=uq#Y*(G{~DgX',
+  // Medium confidence (length 22), primary_stat: 19880, secondary_stat: 55933
+  '@Uge92<m/%J!!fd;sMm?&1G&jVD^bkk@',
+  // Medium confidence (length 25), primary_stat: 39787, secondary_stat: 51796
+  '@Uge8Rrm/%V&!q~r{L_O+!G}=U(U=mwG1po',
 ];
 
+// Type 'd' equipment - Will be added when found
 export const EQUIPMENT_D_SERIALS = [
-  // Type 'd' equipment - replace with real serials when available
+  // Placeholder - update when real serial found
   '@UgdMMNNOO',
 ];
 
+// Other types (w/u/f/!) - Real serials from 1.sav
 export const OTHER_TYPE_SERIALS = [
-  // Other types (w/u/f/!) - replace with real serials when available
+  // Type 'u' utility (low confidence, length 32)
+  '@Uguq~c2?h%y%%%t`i7M2hh71iVEUG8!Cn^l84k{Pw9s&',
+  // Type 'w' (varies by implementation)
   '@UgwAABBCC',
 ];
 

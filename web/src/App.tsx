@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import { decryptSavToYaml, encryptYamlToSav } from './lib/crypto';
 import { findAndDecodeSerials, insertDecodedItems, extractAndEncodeSerials, parseYaml, stringifyYaml } from './lib/yaml';
-import AdSidebar from './components/AdSidebar';
 
 type Mode = 'decrypt' | 'encrypt';
 
@@ -156,8 +155,6 @@ function App() {
 
       <main>
         <div className="app-container">
-          <AdSidebar position="left" />
-
           <div className="main-content">
             <div className="mode-selector">
           <button
@@ -315,8 +312,6 @@ function App() {
           </ul>
         </div>
           </div>
-
-          <AdSidebar position="right" />
         </div>
       </main>
 

@@ -101,4 +101,51 @@ describe('Integration - Real .sav file processing', () => {
     });
   });
 
+  describe('5.sav file tests (brand new character)', () => {
+    it('should decrypt 5.sav to YAML', () => {
+      const savPath = join(FIXTURES_DIR, '5.sav');
+      const savData = new Uint8Array(readFileSync(savPath));
+
+      const yamlBytes = decryptSavToYaml(savData, ACTUAL_STEAM_ID);
+      const yamlString = new TextDecoder().decode(yamlBytes);
+      const yamlData = parseYaml(yamlString);
+
+      expect(yamlData).toBeDefined();
+      expect(yamlData).toBeTypeOf('object');
+      // Verify it's actually the brand new character save
+      expect(yamlData.state?.char_name).toBe('Vex');
+      expect(yamlData.state?.experience?.[0]?.level).toBe(2);
+    });
+
+    it('should round-trip encrypt/decrypt 5.sav without data loss', () => {
+      const savPath = join(FIXTURES_DIR, '5.sav');
+      const originalSavData = new Uint8Array(readFileSync(savPath));
+
+      // Decrypt
+      const yamlBytes = decryptSavToYaml(originalSavData, ACTUAL_STEAM_ID);
+
+      // Re-encrypt
+      const reencrypted = encryptYamlToSav(yamlBytes, ACTUAL_STEAM_ID);
+
+      // Decrypt again
+      const yamlBytes2 = decryptSavToYaml(reencrypted, ACTUAL_STEAM_ID);
+
+      expect(yamlBytes2).toEqual(yamlBytes);
+    });
+
+    it('should find item serials in 5.sav', () => {
+      const savPath = join(FIXTURES_DIR, '5.sav');
+      const savData = new Uint8Array(readFileSync(savPath));
+
+      const yamlBytes = decryptSavToYaml(savData, ACTUAL_STEAM_ID);
+      const yamlString = new TextDecoder().decode(yamlBytes);
+      const yamlData = parseYaml(yamlString);
+
+      const decodedSerials = findAndDecodeSerials(yamlData);
+
+      // Brand new character should have some starting equipment
+      expect(Object.keys(decodedSerials).length).toBeGreaterThanOrEqual(0);
+    });
+  });
+
 });

@@ -127,42 +127,47 @@ export function decryptSavToYaml(savData: Uint8Array, steamId: string): Uint8Arr
     throw new Error(`pako Inflate class failed: ${inflator.msg || inflator.err}`);
   }
 
-  // Manually concatenate chunks if result is undefined
+  // If result is available, return it directly (common case for larger files)
+  if (inflator.result) {
+    return inflator.result as Uint8Array;
+  }
+
+  // For small files or edge cases, manually concatenate chunks from internal state
   const chunks = (inflator as any).chunks as Uint8Array[];
   const strm = (inflator as any).strm;
 
-  if (!inflator.result && chunks && chunks.length > 0) {
+  if (chunks && chunks.length > 0) {
     // Use the actual total output length from the stream
     const actualLength = strm?.total_out || 0;
 
-    if (actualLength === 0) {
-      throw new Error('Cannot determine actual decompressed length');
+    if (actualLength > 0) {
+      // Concatenate all chunks plus the current output buffer
+      const result = new Uint8Array(actualLength);
+      let offset = 0;
+
+      // Copy all complete chunks
+      for (const chunk of chunks) {
+        result.set(chunk, offset);
+        offset += chunk.length;
+      }
+
+      // Copy the remaining bytes from the current output buffer
+      const remainingBytes = strm.next_out;
+      if (remainingBytes > 0) {
+        result.set(strm.output.subarray(0, remainingBytes), offset);
+      }
+
+      return result;
     }
-
-    // Concatenate all chunks plus the current output buffer
-    const result = new Uint8Array(actualLength);
-    let offset = 0;
-
-    // Copy all complete chunks
-    for (const chunk of chunks) {
-      result.set(chunk, offset);
-      offset += chunk.length;
-    }
-
-    // Copy the remaining bytes from the current output buffer
-    const remainingBytes = strm.next_out;
-    if (remainingBytes > 0) {
-      result.set(strm.output.subarray(0, remainingBytes), offset);
-    }
-
-    return result;
   }
 
-  if (!inflator.result) {
-    throw new Error('pako Inflate class returned no result');
+  // Final fallback: check if data is in the output buffer even when chunks is empty
+  // This handles very small compressed payloads (like brand new character saves)
+  if (strm && strm.output && strm.next_out > 0) {
+    return strm.output.subarray(0, strm.next_out);
   }
 
-  return inflator.result as Uint8Array;
+  throw new Error('pako Inflate class returned no result and no chunks available');
 }
 
 /**
